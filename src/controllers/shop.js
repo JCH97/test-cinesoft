@@ -1,4 +1,3 @@
-
 const { Shop } = require("../models");
 
 const create = async (data) => {

@@ -47,7 +47,7 @@ const withAuth = function (req, res, next) {
             if (err) {
                 res.status(401).json({ Unauthorized: "Invalid token" });
             } else {
-                req.id = decoded._id;
+                req._id = decoded._id;
                 req.userName = decoded.userName;
                 next();
             }

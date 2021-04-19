@@ -1,4 +1,5 @@
 const { Animal } = require("../models");
+const petController = require("./pet");
 
 const create = async (data) => {
     try {
@@ -10,11 +11,11 @@ const create = async (data) => {
 };
 
 const findById = async (id) => {
-    return await Animal.findById(id).populate("shop", "breed");
+    return await Animal.findById(id).populate("shop").populate("breed");
 };
 
 const findByName = async (name) => {
-    return await Animal.findByName(name).populate("shop", "bread");
+    return await Animal.findByName(name).populate("shop").populate("breed");
 };
 
 const updateById = async (id, data) => {
@@ -26,7 +27,24 @@ const deleteById = async (id) => {
 };
 
 const findAll = async () => {
-    return await Animal.find({}).populate("shop", "bread");
+    return await Animal.find({}).populate("shop").populate("breed");
+};
+
+const buy = async (idAnimal, idUser) => {
+    const animal = await Animal.findById(idAnimal);
+    if (animal && animal.amount > 0) {
+        await petController.create({
+            name: animal.name,
+            breed: animal.breed,
+            owner: idUser,
+        });
+
+        updateById(idAnimal, { amount: animal.amount - 1 });
+
+        return true;
+    }
+
+    return false;
 };
 
 module.exports = Object.freeze({
@@ -36,4 +54,5 @@ module.exports = Object.freeze({
     updateById,
     deleteById,
     findAll,
+    buy,
 });

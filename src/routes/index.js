@@ -6,4 +6,5 @@ module.exports = function (app) {
     require("./auth")(app);
     require("./image.upload")(app);
     require("./crud")(app);
+    require("./shop")(app);
 };

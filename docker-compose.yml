@@ -1,21 +1,21 @@
 version: "3"
 
 services:
-  app:
-    container_name: example_matcom
-    build: 
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - 3000:3000
-    volumes:
-      - .:/usr/app
-      - /usr/app/node_modules
-    command: node src/index.js 
-    env_file:
-      - .env
-    depends_on:
-      - mongo
+  # app:
+  #   container_name: example_matcom
+  #   build: 
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 3000:3000
+  #   volumes:
+  #     - .:/usr/app
+  #     - /usr/app/node_modules
+  #   command: node src/index.js 
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - mongo
   mongo:
     container_name: mongo_MATCOM
     image: mongo:4.2-bionic

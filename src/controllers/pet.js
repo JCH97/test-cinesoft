@@ -10,11 +10,11 @@ const create = async (data) => {
 };
 
 const findById = async (id) => {
-    return await Pet.findById(id).populate("owner", "breed");
+    return await Pet.findById(id).populate("owner", "userName").populate("breed");
 };
 
 const findByName = async (name) => {
-    return await Pet.findByName(name).populate("owner", "bread");
+    return await Pet.findByName(name).populate("owner", "userName").populate("breed");
 };
 
 const updateById = async (id, data) => {
@@ -26,7 +26,7 @@ const deleteById = async (id) => {
 };
 
 const findAll = async () => {
-    return await Pet.find({}).populate("owner", "bread");
+    return await Pet.find({}).populate("owner", "userName").populate("breed");
 };
 
 module.exports = Object.freeze({

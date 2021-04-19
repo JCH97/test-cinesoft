@@ -4,7 +4,7 @@ let HTTP = {
 
 let Mongo = {
     path: process.env.MONGO_PATH || "localhost",
-    port: process.env.MONGO_PORT || 27017, //default mongo port
+    port: process.env.MONGO_PORT || 27017, 
     dbName: process.env.DB_NAME || "example-test",
 };
 
